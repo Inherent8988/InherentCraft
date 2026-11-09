@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inherent8988 - InherentCraft</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #111111 url("inherentcraftfone.jpg")
+                center center / cover fixed no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 25px;
+            border-bottom: 1px solid #333333;
+        }
+
+        .nickname {
+            display: inline-block;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .check {
+            color: #3399ff;
+            font-size: 22px;
+            margin-left: 5px;
+        }
+
+        .addon {
+            padding: 25px;
+        }
+
+        .addon img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .addon a {
+            display: inline-block;
+            margin-top: 15px;
+            color: white;
+            font-size: 21px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .addon a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="nickname">
+        Inherent8988 <span class="check">✓</span>
+    </div>
+</header>
+
+<!-- April's Minecraft -->
+<div class="addon project">
+    <img src="april.jpg" alt="April's Minecraft V1.0">
+    <a href="aprils.html">
+        April's Minecraft V1.0 - Inherent Studio
+    </a>
+</div>
+
+<!-- No Escape - Java V1.0 -->
+<div class="addon project">
+    <img src="noescape.jpg" alt="No Escape - Java V1.0">
+    <a href="noescapejava.html">
+        No Escape - Java V1.0
+    </a>
+</div>
+
+<!-- Inherent Exclusive Addon V1.0 -->
+<div class="addon project">
+    <img src="exclusive1.jpg" alt="Inherent Exclusive Addon V1.0">
+    <a href="exclusive1.html">
+        Inherent Exclusive Addon V1.0
+    </a>
+</div>
+
+<!-- MohitoClient V1.1 -->
+<div class="addon project">
+    <img src="mohitoclientv1.1.jpg" alt="MohitoClient V1.1">
+    <a href="mohitoclientv1.1.html">
+        MohitoClient V1.1
+    </a>
+</div>
+
+<!-- InherentLib - Beta -->
+<div class="addon project">
+    <img src="inherentlibb.jpg" alt="InherentLib - Beta">
+    <a href="inherentlibb.html">
+        InherentLib - Beta
+    </a>
+</div>
+
+<script>
+    // Тема из настроек (как на главной)
+    try {
+        const savedTheme = localStorage.getItem("inherentcraftTheme");
+
+        if (savedTheme === "mohito") {
+            document.body.style.background =
+                '#111111 url("mohitofone.jpg") center center / cover fixed no-repeat';
+        }
+
+        if (savedTheme === "standard") {
+            document.body.style.background =
+                '#111111 url("inherentcraftfone.jpg") center center / cover fixed no-repeat';
+        }
+    } catch (e) {}
+
+    // Звук клика
+    const clickSound = new Audio("random.click.mp3");
+
+    document.querySelectorAll(".project a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(function () {});
+        });
+    });
+</script>
+
+</body>
+</html>
