@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InherentCraft</title>
+
+    <!-- Google Search Console: замени 2014 на свой код -->
+    <meta name="google-site-verification=4TfTDfuzlKQc8kcENwpDuVJE20_fnxLaJgf90yUNacA">
+
+    <style>
+        body {
+            margin: 0;
+            background: #111111 url("inherentcraftfone.jpg")
+                center center / cover fixed no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            padding: 25px;
+            border-bottom: 1px solid #333333;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .verified,
+        .settings {
+            display: inline-block;
+            color: #4da6ff;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            vertical-align: middle;
+        }
+
+        .verified:hover,
+        .settings:hover {
+            text-decoration: underline;
+        }
+
+        .search-box {
+            padding: 20px 25px 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #333333;
+            background: #1c1c1c;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #555555;
+        }
+
+        .addon {
+            padding: 25px;
+        }
+
+        .addon img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .addon a {
+            display: inline-block;
+            margin-top: 15px;
+            color: white;
+            font-size: 21px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .addon a:hover {
+            text-decoration: underline;
+        }
+
+        #noResults {
+            display: none;
+            padding: 25px;
+            color: #aaaaaa;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img
+        class="logo"
+        src="inherentcraft_title.png"
+        alt="InherentCraft"
+    >
+
+    <a class="verified" href="authors.html">
+        Verified Authors
+    </a>
+
+    <a class="settings" href="settings.html">
+        ⚙️ Настройки
+    </a>
+</header>
+
+<div class="search-box">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔎 Поиск проектов..."
+    >
+</div>
+
+<!-- April's Minecraft -->
+<div class="addon project">
+    <img src="april.jpg" alt="April's Minecraft V1.0">
+    <a href="aprils.html">
+        April's Minecraft V1.0 - Inherent Studio
+    </a>
+</div>
+
+<!-- No Escape - Java V1.0 -->
+<div class="addon project">
+    <img src="noescape.jpg" alt="No Escape - Java V1.0">
+    <a href="noescapejava.html">
+        No Escape - Java V1.0
+    </a>
+</div>
+
+<!-- Inherent Exclusive Addon V1.0 -->
+<div class="addon project">
+    <img src="exclusive1.jpg" alt="Inherent Exclusive Addon V1.0">
+    <a href="exclusive1.html">
+        Inherent Exclusive Addon V1.0
+    </a>
+</div>
+
+<!-- MohitoClient V1.1 -->
+<div class="addon project">
+    <img src="mohitoclientv1.1.jpg" alt="MohitoClient V1.1">
+    <a href="mohitoclientv1.1.html">
+        MohitoClient V1.1
+    </a>
+</div>
+
+<!-- InherentLib - Beta -->
+<div class="addon project">
+    <img src="inherentlibb.jpg" alt="InherentLib - Beta">
+    <a href="inherentlibb.html">
+        InherentLib - Beta
+    </a>
+</div>
+
+<div id="noResults">
+    Ничего не найдено 😔
+</div>
+
+<script>
+    // Загружаем сохранённую тему
+    const savedTheme = localStorage.getItem("inherentcraftTheme");
+
+    if (savedTheme === "mohito") {
+        document.body.style.background =
+            '#111111 url("mohitofone.jpg") center center / cover fixed no-repeat';
+    }
+
+    if (savedTheme === "standard") {
+        document.body.style.background =
+            '#111111 url("inherentcraftfone.jpg") center center / cover fixed no-repeat';
+    }
+
+    // Поиск проектов
+    const searchInput = document.getElementById("searchInput");
+    const projects = document.querySelectorAll(".project");
+    const noResults = document.getElementById("noResults");
+
+    searchInput.addEventListener("input", function () {
+        const searchText = this.value.toLowerCase().trim();
+        let found = false;
+
+        projects.forEach(function (project) {
+            const text = project.textContent.toLowerCase();
+
+            if (text.includes(searchText)) {
+                project.style.display = "block";
+                found = true;
+            } else {
+                project.style.display = "none";
+            }
+        });
+
+        noResults.style.display = found ? "none" : "block";
+    });
+
+    // Звук random.click.mp3
+    const clickSound = new Audio("random.click.mp3");
+
+    const clickableLinks = document.querySelectorAll(
+        ".project a, .verified, .settings"
+    );
+
+    clickableLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(function () {});
+        });
+    });
+</script>
+
+</body>
+</html>
